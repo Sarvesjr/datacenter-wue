@@ -313,7 +313,13 @@ fig, axes = plt.subplots(1, 2, figsize=(22, 9))
 fig.suptitle(
     f'Hyperparameter Tuning — GridSearchCV (5-Fold CV)\n'
     f'Best: K={best_k}, weights={best_w}, metric={best_m}',
-    fontsize=22, fontweight='bold', color=NAVY, y=1.03)
+    fontsize=22, fontweight='bold',
+     color=NAVY, y=1.03)
+
+# Convert plotting data to numeric NumPy arrays
+ks = np.asarray(ks, dtype=float)
+rmse_cv = np.asarray(rmse_cv, dtype=float)
+std_cv = np.asarray(std_cv, dtype=float)
 
 ax1 = axes[0]
 ax1.plot(ks, rmse_cv, color=BLUE, lw=3.0, marker='o',

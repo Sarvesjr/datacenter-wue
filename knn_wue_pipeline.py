@@ -496,6 +496,11 @@ ks   = cv_eucl['param_model__n_neighbors'].values
 rmse_cv = -cv_eucl['mean_test_score'].values
 std_cv  =  cv_eucl['std_test_score'].values
 
+# GridSearchCV parameter columns are object-typed in the results DataFrame.
+ks = np.asarray(ks, dtype=float)
+rmse_cv = np.asarray(rmse_cv, dtype=float)
+std_cv = np.asarray(std_cv, dtype=float)
+
 ax1 = axes[0]
 ax1.plot(ks, rmse_cv, 'b-o', ms=5, lw=2,
          label='CV RMSE (distance, euclidean)')
